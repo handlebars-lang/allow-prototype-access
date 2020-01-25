@@ -106,8 +106,7 @@ console.log(output);
 npm install @handlebars/allow-prototype-access
 ```
 
- 
-# Usage
+# Usage (plain Handlebars)
 
 The following example demonstrates how to use this module:
 
@@ -134,11 +133,36 @@ This will generate the following output
 returnValue
 ```
 
+# Usage ([express-handlebars](https://npmjs.com/package/express-handlebars) and [mongoose](https://npmjs.com/package/mongoose))
+
+`express-handlebars` does not allow you to specify runtime-options to pass
+to the template function. This package can help you disable prototype checks
+for you models.
+
+**Only do this, if you have full control over the templates that are executed in the server.**
+
+```js
+var express = require('express');
+var Handlebars = require('handlebars')
+var expressHandlebars = require('express-handlebars');
+var {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
+
+const app = express();
+
+app.engine('hbs', expressHandlebars({
+    handlebars: allowInsecurePrototypeAccess(Handlebars)
+}));
+app.set('view engine', 'handlebars');
+...
+```
+
+
+
 
 
 # License
 
-`@handlebars/allow-prototype-access` is published under the ISC-license.
+`@handlebars/allow-prototype-access` is published under the MIT-license.
 
 See [LICENSE.md](LICENSE.md) for details.
 
