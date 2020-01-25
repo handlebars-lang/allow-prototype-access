@@ -1,6 +1,6 @@
 {
   "name": "@handlebars/allow-prototype-access",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Revert a Handlebars-instance ^4.6.0 to the proto-accessing behavior of 4.5.3",
   "main": "dist/cjs/index.js",
   "module": "src/index.js",
