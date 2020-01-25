@@ -13,7 +13,7 @@
     "lint": "eslint --max-warnings 0 '**/*.{js,ts}'",
     "thought": "thought run -a",
     "version": "npm run thought",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build:commonjs"
   },
   "license": "MIT",
   "files": [
