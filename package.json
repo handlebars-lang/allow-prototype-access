@@ -1,0 +1,70 @@
+{
+  "name": "@handlebars/allow-prototype-access",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/cjs/index.js",
+  "module": "src/index.js",
+  "types": "types/index.d.ts",
+  "scripts": {
+    "build:commonjs": "babel src --out-dir dist/cjs",
+    "pretest": "npm run build:commonjs",
+    "test": "jest && tsd",
+    "format": "prettier --write **/*.{js,ts,md}",
+    "lint": "eslint --max-warnings 0 '**/*.{js,ts}'"
+  },
+  "files": [
+    "dist",
+    "src",
+    "types/index.d.ts"
+  ],
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.8.3",
+    "@babel/core": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "@types/jest": "^24.9.0",
+    "@types/node": "^13.1.8",
+    "@typescript-eslint/eslint-plugin": "^2.17.0",
+    "@typescript-eslint/parser": "^2.17.0",
+    "babel-jest": "^24.9.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-compat": "^3.3.0",
+    "eslint-plugin-jest": "^23.6.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "handlebars": "^4.7.2",
+    "husky": "^4.1.0",
+    "jest": "^24.9.0",
+    "lint-staged": "^10.0.1",
+    "prettier": "^1.19.1",
+    "thought": "^2.0.0",
+    "ts-jest": "^24.3.0",
+    "tsd": "^0.11.0",
+    "typescript": "^3.7.5"
+  },
+  "peerDependencies": {
+    "handlebars": "^4.7.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "browserslist": [
+    "chrome 70",
+    "last 1 versions",
+    "not ie < 8"
+  ],
+  "lint-staged": {
+    "*.{js,ts}": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.{js,ts,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "dependencies": {}
+}
