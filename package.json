@@ -12,7 +12,8 @@
     "format": "prettier --write **/*.{js,ts,md}",
     "lint": "eslint --max-warnings 0 '**/*.{js,ts}'",
     "thought": "thought run -a",
-    "version": "npm run thought"
+    "version": "npm run thought",
+    "prepublish": "npm run build"
   },
   "license": "MIT",
   "files": [
@@ -22,7 +23,6 @@
   ],
   "keywords": [],
   "author": "",
-  "license": "ISC",
   "devDependencies": {
     "@babel/cli": "^7.8.3",
     "@babel/core": "^7.8.3",
@@ -42,7 +42,6 @@
     "lint-staged": "^10.0.1",
     "prettier": "^1.19.1",
     "thought": "^2.0.0",
-    "ts-jest": "^24.3.0",
     "tsd": "^0.11.0",
     "typescript": "^3.7.5"
   },
