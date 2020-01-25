@@ -1,0 +1,59 @@
+This package allows you to create a new Handlebars instance, that behaves like version 4.5.3 and allows access to the
+prototype
+
+## Why?
+
+In the past, Handlebars would allow you to access prototype methods and properties of the input object form the
+template.
+
+```hbs
+start\{{aString.trim}}end
+```
+
+with the input
+
+```
+{
+    aString: '   abc    '
+}
+```
+
+would result in the output `startabcend`.
+
+Multiple security issues have come from this behaviour. Details can be found in the npm-security advisories
+[755](https://www.npmjs.com/advisories/755),
+[1164](https://www.npmjs.com/advisories/1164), [1316](https://www.npmjs.com/advisories/1316),
+[1324](https://www.npmjs.com/advisories/1324) and [1325](https://www.npmjs.com/advisories/1325) and in the blog-article
+of [Mahmoud Gamal](http://mahmoudsec.blogspot.com/2019/04/handlebars-template-injection-and-rce.html).
+
+Those issues have been fixed, but we cannot be sure that there are ways around the fixes. That's why, in `handlebars@^4.6.0`.
+access to the object prototype has been disabled completely.
+
+Now, if you use custom classes as input to Handlebars, your code won't work anymore.
+
+{{example 'examples/example.access-forbidden.js'}}
+
+{{exec 'node example.access-forbidden.js 2>&1' cwd='examples'}}
+
+This has now led to a number of problems for projects like {{npm 'typedoc'}}, because they are using such classes
+as input for the template.
+
+This package automatically adds runtime options to each template-calls, disabling the security restrictions.
+
+## When NOT to use it?
+
+The question is: Who is writing the templates that Handlebars is executing? Is it only your developers? Is it the user?
+
+The leak published in [npm advisory 755](https://www.npmjs.com/advisories/755) meant that somebody writing a template
+could effectively execute code inside your server. Although the disclosed exploits have been fixed, new exploits have
+become much more probable, now that the principle is well-known, so:
+
+**If your users are writing templates and you execute them on your server you should NOT use this package, but rather
+find other ways to solve the problem.** I suggest you  convert your class-instances to plain JavaScript objects before
+passing them to the template function.
+Every property or function you access, must be an "own property" of its parent.
+
+{{example 'examples/example.security-relevant.js'}}
+
+
+
