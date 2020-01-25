@@ -10,7 +10,9 @@
     "pretest": "npm run build:commonjs",
     "test": "jest && tsd",
     "format": "prettier --write **/*.{js,ts,md}",
-    "lint": "eslint --max-warnings 0 '**/*.{js,ts}'"
+    "lint": "eslint --max-warnings 0 '**/*.{js,ts}'",
+    "thought": "thought run -a",
+    "version": "npm run thought"
   },
   "files": [
     "dist",
