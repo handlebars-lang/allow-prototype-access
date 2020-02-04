@@ -24,7 +24,7 @@ var {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access
 
 const app = express();
 
-app.engine('hbs', expressHandlebars({
+app.engine('handlebars', expressHandlebars({
     handlebars: allowInsecurePrototypeAccess(Handlebars)
 }));
 app.set('view engine', 'handlebars');
