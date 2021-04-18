@@ -15,6 +15,10 @@
     "version": "npm run thought",
     "prepublish": "npm run build:commonjs"
   },
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/handlebars-lang/allow-prototype-access"
+  },
   "license": "MIT",
   "files": [
     "dist",
