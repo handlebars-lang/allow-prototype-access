@@ -135,13 +135,6 @@ returnValue
 
 # Usage ([express-handlebars](https://npmjs.com/package/express-handlebars) and [mongoose](https://npmjs.com/package/mongoose))
 
-## Recommended solution
-
-The recommended solution for this constellation is **not** to use this package, but to use the **lean()-method** on Mongoose-queries.
-See https://mongoosejs.com/docs/tutorials/lean.html for details. This will ensure, that all properties passed to the template are "own"-properties
-
-## Alternative
-
 `express-handlebars` does not allow you to specify runtime-options to pass
 to the template function. This package can help you disable prototype checks
 for you models.
